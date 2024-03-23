@@ -5,14 +5,15 @@ public class PriorityQueue<E extends Comparable<E>> {
         this.root = null;
     }
 
-    public void enqeue(E value) {
+    public void enqueue(E value) {
         Node<E> newNode = new Node<>(value);
         root = merge(root, newNode);
     }
 
     public E dequeue(){
+        E placeHold = root.element;
         root = merge(root.left, root.right);
-        return root.element;
+        return placeHold;
     }
     public boolean isEmpty() {
         if (root == null){
